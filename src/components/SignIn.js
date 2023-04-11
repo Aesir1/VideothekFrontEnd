@@ -2,11 +2,13 @@ import { signInRequest } from "../apis/customer";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import { login, userInfo } from "../redux/userSlice";
-import React, { Component }  from 'react';
+import React from 'react';
+import os from 'os';
 
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const hostname = os.hostname();
 
   const OnSignUp = () => {
     navigate("/signUp");
@@ -35,6 +37,12 @@ const SignIn = () => {
   };
 
   return (
+    <div>
+      <h2>Current pod: {hostname}</h2>
+    <div style={{
+      position: 'absolute', left: '50%', top: '50%',
+      transform: 'translate(-50%, -50%)'
+  }}>
     <div className="ui grid container">
       <div className="ui placeholder segment">
         <div className="ui two column very relaxed stackable grid">
@@ -70,6 +78,8 @@ const SignIn = () => {
         </div>
         <div className="ui vertical divider">Or</div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
